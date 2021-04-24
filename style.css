@@ -3,5 +3,6 @@
 } */
 
 #game {
+    display: none;
     background-image: url(./assets/space-background.png);
 }

@@ -16,4 +16,6 @@ Shoot birds for extra points.
 
 # Game Creation Method
 
-I hope to try to create this game with css animations and keyframes.
+I initially wanted to create this game using mainly css animations but because I wanted the player to be able to control the flight of the spaceship I will use canvas.
+
+I would still like to try using animations for affects.
