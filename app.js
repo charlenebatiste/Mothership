@@ -1,3 +1,35 @@
+// ~~~ START SCRIPT ~~~
+
+// button variables
+const instructions = document.getElementById('instructions');
+const start = document.getElementById('start');
+
+// added hover feature to buttons
+
+instructions.addEventListener("mouseover", () => {
+    // console.log('testing i am over the button');
+    instructions.style.backgroundColor = "#cbc3e3";
+    instructions.style.fontStyle = "italic";
+})
+instructions.addEventListener("mouseout", () => {
+    instructions.style.backgroundColor = "#0dcaf0";
+    instructions.style.fontStyle = "normal";
+})
+
+start.addEventListener("mouseover", () => {
+    start.style.backgroundColor = "#93DB70";
+    start.style.fontStyle = "italic";
+})
+start.addEventListener("mouseout", () => {
+    start.style.backgroundColor = "#ffca2c";
+    start.style.fontStyle = "normal";
+})
+
+// open instructions modal
+
+
+// ~~~ GAME SCRIPT ~~~
+
 // GLOBAL VARIABLES
 
 const game = document.getElementById("game");

@@ -11,30 +11,30 @@
     <title>Mothership - Play Game</title>
 </head>
 <body>
-    <div class="container start-screen">
-        <div class="row title py-5 text-center">
-            <div class="col start-screen__title">
+    <div class="start-screen container">
+        <div class="start-screen__title row py-5 text-center">
+            <div class="col">
                 <h1 class="display-2"><u>MOTHERSHIP</u></h1>
             </div>
         </div>
-        <div class="row">
+        <div class="start-screen__story row">
             <div class="col-12">
-                <p class="h4">It’s been over a year since your emergency landing on the planet, Nod... and over a year since you sent out your distress beacon with no way of knowing if your call was heard.</p>
+                <p class="h4 py-2">It’s been over a year since your emergency landing on the planet, Nod... and over a year since you sent out your distress beacon with no way of knowing if your call was heard.</p>
             </div>
-            <div class="col-5 py-3 offset-1 text-center">
+            <div class="col-4 py-3 offset-1 text-center">
                 <p class="h5">The good news:</p>
             </div>
-            <div class="col-6 py-3">
+            <div class="col-5 py-3">
                 <p class="h5">Your call WAS heard and the Mothership has come for you.</p>
             </div>
-            <div class="col-5 py-3 offset-1 text-center">
+            <div class="col-4 py-3 offset-1 text-center">
                 <p class="h5">The bad news:</p>
             </div>
-            <div class="col-6 py-3">
+            <div class="col-5 py-3">
                 <p class="h5">She parked outside the atmosphere and wants you to come to her.</p>
             </div>
         </div>
-        <div class="row py-3">
+        <div class="start-screen__directions row py-3">
             <div class="col-12">
                 <p class="h4">Enough fuel has been sent to get you back to the landing dock. Get through the asteroid belt safely to reach the Mothership.</p>
             </div>
@@ -42,15 +42,39 @@
                 <h2>Press 'Blast Off' to play</h2>
             </div>
         </div>
-        <div class="row py-4">
+        <div class="start-screen__buttons row py-4">
             <div class="col-6 text-center">
-                <button type="button" class="btn btn-info" id="instructions">Instructions</button>
+                <button type="button" class="btn btn-info px-4 py-2" data-bs-toggle="modal" data-bs-target="#instructionsModal" id="instructions">Instructions</button>
             </div>
             <div class="col-6 text-center">
-                <button type="button" class="btn btn-warning" id="start">BLAST OFF!</button>
+                <button type="button" class="btn btn-warning px-4 py-2" id="start">BLAST OFF!</button>
             </div>
         </div>
     </div>
+    <!-- Instructions Modal -->
+
+    <div class="modal fade" id="instructionsModal" tabindex="-1" aria-labelledby="instructionsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="instructionsModalLabel">How to Play</h5>
+              <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+            </div>
+            <div class="modal-body">
+                <p>To move your spaceship:</p>
+                <ul class="keys py-2">
+                    <li>Press the <u>spacebar</u> to go up</li>
+                    <li>Press the <u>right arrow key</u> to go right</li>
+                    <li>Press the <u>left arrow key</u> to go left</li>
+                </ul>
+                <p>Avoid the asteroids! Your ship's defenses won't protect you from them.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
     <canvas id="game">
 

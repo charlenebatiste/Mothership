@@ -8,6 +8,11 @@ body {
     color: rgb(255, 179, 80);
 }
 
+.modal-content{
+    border: solid .4em whitesmoke;
+    background-color: #cbc3e3;
+}
+
 #game {
     display: none;
     background-image: url(./assets/space-background.png);
