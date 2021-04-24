@@ -1,3 +1,7 @@
-body {
+/* body {
     background-color: black;
+} */
+
+#game {
+    background-image: url(./assets/space-background.png);
 }
