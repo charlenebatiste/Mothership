@@ -7,15 +7,16 @@ This game was created to help develop my Javascript skills while practicing usin
 - [Title of Game](#title-of-game)
 - [How to Play](how-to-play)
 - [Start Up Screen](start-up-screen)
-- [How It Works](how-it-works)
+- [How It Works ](how-it-works)
 - [Setup](#setup)
 - [Technologies](#technologies)
 - [Initial Wireframes](#initial-wireframes)
+- [Future Considerations](#future-considerations)
 - [Scratch Work](#scratch-work)
 
 ## Title of Game
 
-Mothership
+🛸 Mothership🛸
 
 ## How to Play
 
@@ -48,7 +49,14 @@ This project was created with:
 
 ## Initial Wireframes:
 
-Initial Wireframes go here ( images )
+Initial Wireframe for Start Screen:
+
+![Start Screen Wireframe](/assets/start-screen-wireframe.png)
+
+## FUTURE CONSIDERATIONS
+
+1. I would like to add some sort of animations to the asteroids so they move across the screen rather than remaining stationary.
+2. I would like to build a blaster feature into the players ship to shoot elements out of the sky for extra points.
 
 ## Scratch Work:
 
