@@ -16,7 +16,7 @@ This game was created to help develop my Javascript skills while practicing usin
 
 ## Title of Game
 
-🛸 Mothership🛸
+🛸 MOTHERSHIP🛸
 
 ## How to Play
 
