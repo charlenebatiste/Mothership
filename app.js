@@ -58,19 +58,20 @@ function quitGame() {
 
 const game = document.getElementById("game");
 const ctx = game.getContext("2d");
-
+let runGame;
 let player;
+let asteroid;
 
-// ESTABLISH HEIGHT AND WIDTH OF GAME SCREEN
+// // ESTABLISH HEIGHT AND WIDTH OF GAME SCREEN
 
-game.setAttribute("height", getComputedStyle(game)["height"]);
-game.setAttribute("width", getComputedStyle(game)["width"]);
-// takes the height and width properties of the canvas from stylesheet,
-// and sets resolves those values to scale with the browser 
+game.setAttribute('width', '500');
+game.setAttribute('height', '600');
+
+// sets resolves those values to scale with the browser 
 
 
-// FACTORY FUNCTION TO HELP BUILD ELEMENTS
-function spaceObject(x, y, color, lineColor, lineWeight, width, height, speed) {
+// // FACTORY FUNCTION TO HELP BUILD ELEMENTS
+function spaceObject(x, y, color, lineColor, lineWeight, width, height) {
     this.x = x;
     this.y = y;
     this.color = color;
@@ -78,7 +79,6 @@ function spaceObject(x, y, color, lineColor, lineWeight, width, height, speed) {
     this.lineWeight = lineWeight;
     this.width = width;
     this.height = height;
-    this.speed = speed;
     this.render = function () {
         ctx.fillStyle = this.color;
         ctx.strokeStyle = this.lineColor;
@@ -88,44 +88,60 @@ function spaceObject(x, y, color, lineColor, lineWeight, width, height, speed) {
       };
 }
 
-// WAITS FOR ALL CONTENTS OF PAGE TO LOAD BEFORE RENDERING GAME
-window.addEventListener("DOMContentLoaded", initializeGame);
+// location of asteroids // very repetitive // needs a short way to build this
+asteroid = new spaceObject(300, 200, 'yellow', 'brown', 2, 35, 35);
+asteroid2 = new spaceObject(370, 140, 'yellow', 'brown', 2, 35, 35);
+asteroid3 = new spaceObject(200, 285, 'yellow', 'brown', 2, 35, 35);
+asteroid4 = new spaceObject(120, 420, 'yellow', 'brown', 2, 35, 35);
+asteroid5 = new spaceObject(385, 350, 'yellow', 'brown', 2, 35, 35);
+asteroid6 = new spaceObject(80, 200, 'yellow', 'brown', 2, 35, 35);
+asteroid7 = new spaceObject(180, 120, 'yellow', 'brown', 2, 35, 35);
+asteroid8 = new spaceObject(100, 360, 'yellow', 'brown', 2, 35, 35);
 
 
-function initializeGame() {
-    player = new spaceObject(450, 200, "aquamarine", "hotpink", 2, 50, 50, 10);
-    player.render();
-    document.addEventListener("keydown", detectMovement);
-    
-};
-
-    
-
-
-// CODE TO DETECT KEYBINDINGS
+// // CODE TO DETECT KEYBINDINGS
 
    function detectMovement(e){
         if(e.which === 32){
-            player.y -= speed
-            // console.log('you are pressing space')
+            console.log(player)
+            player.y -= 10
+            console.log('you are pressing space')
             //  player ship will move 10 up
         } else if (e.which === 37){
-            player.x -= player.speed
-            // console.log('you are pressing the left arrow')
+            player.x -= 10
+            console.log('you are pressing the left arrow')
             //  player ship will move 10 left
         }else if (e.which === 39){
-            player.x += player.speed
-            // console.log('you are pressing the right arrow')
+            player.x += 10
+            console.log('you are pressing the right arrow')
             //  player ship will move 10 right
         }
    }
 
-//    ?need to link key binding to player?
+// //    ?need to link key binding to player?
 
-// CODE TO MOVE PLAYER SHIP 
+// // CODE TO MOVE PLAYER SHIP 
 
-function moveShip() {
-    
-}
+function gameLoop() {
+    // clear function
+    asteroid.render();
+    asteroid2.render();
+    asteroid3.render();
+    asteroid4.render();
+    asteroid5.render();
+    asteroid6.render();
+    asteroid7.render();
+    asteroid8.render();
+    player.render();
+  }
 
 
+
+// // WAITS FOR ALL CONTENTS OF PAGE TO LOAD BEFORE RENDERING GAME
+document.addEventListener("DOMContentLoaded", function () {
+    player = new spaceObject(250, 525, "aquamarine", "hotpink", 2, 30, 30);
+    document.addEventListener("keydown", detectMovement);
+    runGame = setInterval(gameLoop, 60);
+  });
+
+  
