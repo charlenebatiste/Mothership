@@ -20,7 +20,13 @@ This game was created to help develop my Javascript skills while practicing usin
 
 ## How to Play
 
-Brief description of how to play
+Guide your spaceship through the asteroid field to get to the mothership. Avoid flying into an asteroid or risk being blown out of the sky.
+
+### To move your spaceship
+
+- Press the _spacebar_ to go up
+- Press the _right arrow key_ to go right
+- Press the _left arrow key_ to go left
 
 ## Start Up Screen:
 

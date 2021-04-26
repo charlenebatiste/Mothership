@@ -121,15 +121,15 @@ asteroid8 = new spaceObject(100, 360, 'yellow', 'brown', 2, 35, 35);
         if(e.which === 32){
             console.log(player)
             player.y -= 10
-            console.log('you are pressing space')
+            // console.log('you are pressing space')
             //  player ship will move 10 up
         } else if (e.which === 37){
             player.x -= 10
-            console.log('you are pressing the left arrow')
+            // console.log('you are pressing the left arrow')
             //  player ship will move 10 left
         }else if (e.which === 39){
             player.x += 10
-            console.log('you are pressing the right arrow')
+            // console.log('you are pressing the right arrow')
             //  player ship will move 10 right
         }
    }

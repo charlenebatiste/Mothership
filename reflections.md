@@ -1,4 +1,4 @@
-# Weekend
+# Monday
 
 - [x] What did you achieve over the weekend?
 - [x] What are your goals for today?
@@ -15,25 +15,19 @@
 
 3. I struggled to render the player after building a factory function. I realized it was because I wasn't passing enough arguments into the parameters that factory function required so it was keeping the initial value of the player ship, which was nothing.
 
-# Monday
-
-- [x] What did you achieve yesterday?
-- [x] What are your goals for today?
-- [x] Do you have any blockers?
-
-1. RESPONSE
-2. RESPONSE
-3. RESPONSE
-
 # Tuesday
 
 - [x] What did you achieve yesterday?
 - [x] What are your goals for today?
 - [x] Do you have any blockers?
 
-1. RESPONSE
-2. RESPONSE
-3. RESPONSE
+1. I rendered the player and several hard-coded asteroids to the screen. I also got an asteroid to render to the canvas at a random location. I got the buttons working from the start screen to the play screen and vice-versa, and I built the wireframe for the play screen.
+2. Goals for today:
+
+- get a function written that will randomize the location of a set number of asteroids to the canvas.
+- build the detectImpact function.
+
+3. I expect to struggle building the loop for the asteroid randomizer as that's something I haven't been strong in in this course so I will have to take some time to review that and make the return variables of that loop available to be rendered.
 
 # Wednesday
 
