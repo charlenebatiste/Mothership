@@ -5,6 +5,7 @@ body {
 }
 
 .start-screen{
+    /* display: none; */
     color: rgb(255, 179, 80);
 }
 
