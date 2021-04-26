@@ -38,14 +38,15 @@ const ctx = game.getContext("2d");
 let player;
 
 // ESTABLISH HEIGHT AND WIDTH OF GAME SCREEN
-game.setAttribute('width', '800');
-game.setAttribute('height', '800');
 
-
+game.setAttribute("height", getComputedStyle(game)["height"]);
+game.setAttribute("width", getComputedStyle(game)["width"]);
+// takes the height and width properties of the canvas from stylesheet,
+// and sets resolves those values to scale with the browser 
 
 
 // FACTORY FUNCTION TO HELP BUILD ELEMENTS
-function spaceObject(x, y, color, lineColor, lineWeight, width, height) {
+function spaceObject(x, y, color, lineColor, lineWeight, width, height, speed) {
     this.x = x;
     this.y = y;
     this.color = color;
@@ -53,6 +54,7 @@ function spaceObject(x, y, color, lineColor, lineWeight, width, height) {
     this.lineWeight = lineWeight;
     this.width = width;
     this.height = height;
+    this.speed = speed;
     this.render = function () {
         ctx.fillStyle = this.color;
         ctx.strokeStyle = this.lineColor;
@@ -63,25 +65,43 @@ function spaceObject(x, y, color, lineColor, lineWeight, width, height) {
 }
 
 // WAITS FOR ALL CONTENTS OF PAGE TO LOAD BEFORE RENDERING GAME
-document.addEventListener("DOMContentLoaded", function() {
-    player = new spaceObject(400, 700, "aquamarine", "hotpink", 2, 50, 50);
-    // console.log(player);
-    player.render();
+window.addEventListener("DOMContentLoaded", initializeGame);
 
-});
+
+function initializeGame() {
+    player = new spaceObject(450, 300, "aquamarine", "hotpink", 2, 50, 50, 10);
+    player.render();
+    document.addEventListener("keydown", detectMovement);
+    
+};
 
     
 
 
-// SANDBOX CODE FOR KEYBOARD INTERACTION
+// CODE TO DETECT KEYBINDINGS
 
-//   function movementHandler(e){
-//        if key press matches 'W, S A or D" move character up,down, left or right
-//        if(someCondition){
-//            hero.y += 10
-//        } else if (some condition){
-//        }else if (some condition){
-//        }else if(some condition){
-//        }
-//        key event codes - here https://keycode.info/
-//   }
+   function detectMovement(e){
+        if(e.which === 32){
+            player.y -= speed
+            console.log('you are pressing space')
+            //  player ship will move 10 up
+        } else if (e.which === 37){
+            player.x -= player.speed
+            console.log('you are pressing the left arrow')
+            //  player ship will move 10 left
+        }else if (e.which === 39){
+            player.x += player.speed
+            console.log('you are pressing the right arrow')
+            //  player ship will move 10 right
+        }
+   }
+
+//    ?need to link key binding to player?
+
+// CODE TO MOVE PLAYER SHIP 
+
+function moveShip() {
+    
+}
+
+
