@@ -44,6 +44,7 @@ abort.addEventListener('click', quitGame);
 
 function quitGame() {
     if (document.querySelector('.play-screen').style.display = 'block') {
+        clearCanvas();
         document.querySelector('.play-screen').style.display = 'none';
         document.querySelector('.start-screen').style.display = 'block';
         // console.log('you are about to change screens')
@@ -62,12 +63,16 @@ let runGame;
 let player;
 let asteroid;
 
-// // ESTABLISH HEIGHT AND WIDTH OF GAME SCREEN
+
+ // ESTABLISH HEIGHT AND WIDTH OF GAME SCREEN
 
 game.setAttribute('width', '500');
 game.setAttribute('height', '600');
 
-// sets resolves those values to scale with the browser 
+// FUNCTION TO CLEAR CANVAS
+function clearCanvas() {
+    ctx.clearRect(0, 0, game.width, game.height);
+  }
 
 
 // // FACTORY FUNCTION TO HELP BUILD ELEMENTS
@@ -87,6 +92,17 @@ function spaceObject(x, y, color, lineColor, lineWeight, width, height) {
         ctx.strokeRect(this.x, this.y, this.width, this.height);
       };
 }
+
+// SANDBOX
+
+// equations for asteroid location randomizer
+let randomAsteroidX = Math.floor(Math.random() * (game.width - 35));
+let randomAsteroidY = Math.floor(Math.random() * (game.height - 35));
+// randomizes for 1 element. cannot pass these as arguments in other asteroids
+// because they will plot on top of each other. Need to run this in a for loop
+// and set the outcome to varying x and y positions for each asteroid.
+
+testAsteroid = new spaceObject(randomAsteroidX, randomAsteroidY, 'pink', 'brown', 2, 35, 35)
 
 // location of asteroids // very repetitive // needs a short way to build this
 asteroid = new spaceObject(300, 200, 'yellow', 'brown', 2, 35, 35);
@@ -118,12 +134,8 @@ asteroid8 = new spaceObject(100, 360, 'yellow', 'brown', 2, 35, 35);
         }
    }
 
-// //    ?need to link key binding to player?
-
-// // CODE TO MOVE PLAYER SHIP 
-
 function gameLoop() {
-    // clear function
+    clearCanvas();
     asteroid.render();
     asteroid2.render();
     asteroid3.render();
@@ -132,6 +144,7 @@ function gameLoop() {
     asteroid6.render();
     asteroid7.render();
     asteroid8.render();
+    testAsteroid.render();
     player.render();
   }
 
