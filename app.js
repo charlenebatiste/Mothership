@@ -1,8 +1,9 @@
-// ~~~ START SCRIPT ~~~
+// ~~~ START SCREEN SCRIPT ~~~
 
 // button variables
 const instructions = document.getElementById('instructions');
 const start = document.getElementById('start');
+const abort = document.getElementById('quitGame');
 
 // added hover feature to buttons
 
@@ -25,10 +26,33 @@ start.addEventListener("mouseout", () => {
     start.style.fontStyle = "normal";
 })
 
-// open instructions modal
+// go to play screen using BLAST OFF button
 
+start.addEventListener('click', playGame);
 
-// ~~~ GAME SCRIPT ~~~
+function playGame() {
+    if (document.querySelector('.start-screen').style.display = 'block') {
+        document.querySelector('.start-screen').style.display = 'none';
+        document.querySelector('.play-screen').style.display = 'block';
+        // console.log('you are about to change screens')
+    }
+}
+
+// go to start screen using ABORT MISSION button
+
+abort.addEventListener('click', quitGame);
+
+function quitGame() {
+    if (document.querySelector('.play-screen').style.display = 'block') {
+        document.querySelector('.play-screen').style.display = 'none';
+        document.querySelector('.start-screen').style.display = 'block';
+        // console.log('you are about to change screens')
+    }
+}
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+// ~~~ GAME SCREEN SCRIPT ~~~
 
 // GLOBAL VARIABLES
 
@@ -69,7 +93,7 @@ window.addEventListener("DOMContentLoaded", initializeGame);
 
 
 function initializeGame() {
-    player = new spaceObject(450, 300, "aquamarine", "hotpink", 2, 50, 50, 10);
+    player = new spaceObject(450, 200, "aquamarine", "hotpink", 2, 50, 50, 10);
     player.render();
     document.addEventListener("keydown", detectMovement);
     
@@ -83,15 +107,15 @@ function initializeGame() {
    function detectMovement(e){
         if(e.which === 32){
             player.y -= speed
-            console.log('you are pressing space')
+            // console.log('you are pressing space')
             //  player ship will move 10 up
         } else if (e.which === 37){
             player.x -= player.speed
-            console.log('you are pressing the left arrow')
+            // console.log('you are pressing the left arrow')
             //  player ship will move 10 left
         }else if (e.which === 39){
             player.x += player.speed
-            console.log('you are pressing the right arrow')
+            // console.log('you are pressing the right arrow')
             //  player ship will move 10 right
         }
    }
