@@ -1,21 +1,26 @@
 # Proposal of Game
 
-The intent is to build a game in which a stranded alien ship returns to the Mothership that is waiting outside the planet's atmosphere.
+The intent is to build a game in which a stranded alien ship returns to the Mothership that is waiting outside the planet's atmosphere. There will be asteroids between the player and the Mothership and the player needs to avoid hitting them or be blown up.
 
-# General Process
+# Game Creation Plan
 
-The game will use key bindings to move the player:
+- build a canvas that renders the player ship and x number of asteroids (at various locations) to the canvas.
+- move player ship through the sky using keybindings
+  The game will use key bindings to move the player:
+
 *spacebar to thrust `function moveUp()`
 *left arrow keys to go right `function moveRight()`
 *right arrow key to to right `function moveLeft()`
 *up arrow key to shoot `function shoot()`
 
-There will be other objects in the sky (asteroids, satelites) between the player and the Mothership and the player needs to avoid hitting them or be knocked out of the sky.
+- detectImpact() that will recognize if ship goes into the body of any asteroid elements
 
-Shoot birds for extra points.
+- space traveled between player ship start point and the end of the game will count as the score.
 
-# Game Creation Method
+~~
 
 I initially wanted to create this game using mainly css animations but because I wanted the player to be able to control the flight of the spaceship I will use canvas.
 
 I would still like to try using animations for affects.
+
+Bootstrap for basic styling.
