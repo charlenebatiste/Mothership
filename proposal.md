@@ -10,8 +10,7 @@ The intent is to build a game in which a stranded alien ship returns to the Moth
 
 *spacebar to thrust `function moveUp()`
 *left arrow keys to go right `function moveRight()`
-*right arrow key to to right `function moveLeft()`
-*up arrow key to shoot `function shoot()`
+\*right arrow key to to right `function moveLeft()`
 
 - detectImpact() that will recognize if ship goes into the body of any asteroid elements
 

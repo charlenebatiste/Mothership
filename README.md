@@ -42,8 +42,7 @@ Code snippets go here
 This project was created with:
 
 - Bootstrap
-- Other tech
-- Other tech
+- Canvas
 
 # PROCESS WORK
 
@@ -52,6 +51,10 @@ This project was created with:
 Initial Wireframe for Start Screen:
 
 ![Start Screen Wireframe](/assets/start-screen-wireframe.png)
+
+Initial Wireframe for Play Screen:
+
+![Play Screen Wireframe](/assets/play-screen-wireframe.png)
 
 ## FUTURE CONSIDERATIONS
 
