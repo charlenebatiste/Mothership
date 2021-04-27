@@ -111,7 +111,7 @@ function spaceObject() {
       };
 }
 
-// sets new asteroids equal to spaceObject
+// FUNCTION TO FILL ASTROIDARRAY WITH ASTEROIDS AND SETS EACH ASTEROID EQUAL TO SPACE OBJECT
 
 
 function generateAsteroids () {
@@ -125,7 +125,7 @@ function generateAsteroids () {
 }
 
 
-// need to build a loop to render each element of the asteroidsArray to the page. will go in gameLoop()
+// FUNCTION TO RENDER EACH ELEMENT OF ASTEROIDARRAY TO THE PAGE
 
 function renderAsteroids() {
     asteroidArray.forEach(e => {
@@ -152,8 +152,7 @@ function detectMovement(e){
 function gameLoop() {
     clearCanvas();
     renderAsteroids();
-    // when generateAsteroids was here it kept rerendering asteroids all over the page
-    // asteroid15.render(); 
+        // this takes each element inside of the populated asteroidsArray and renders them to the page
     player.render();
   }
 
@@ -164,7 +163,7 @@ document.addEventListener("DOMContentLoaded", function () {
     player = new spaceship(250, 550, "aquamarine", "hotpink", 2, 30, 30);
     document.addEventListener("keydown", detectMovement);
     generateAsteroids();
-    // this generates the asteroids array and sets the elements to spaceObjects
+        // this fills the asteroidsArray with asteroids and sets the elements to spaceObjects
     runGame = setInterval(gameLoop, 60);
     
   });
