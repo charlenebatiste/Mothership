@@ -118,8 +118,8 @@ function generateAsteroids () {
     let asteroid;
     for (let i = 0; i <= 15; i++) {
     // 15 is the set number of asteroids to build
-        asteroidArray.push(asteroid)
         asteroid = new spaceObject;
+        asteroidArray.push(asteroid)
         // asteroid.render();
     }
 }
@@ -127,7 +127,11 @@ function generateAsteroids () {
 
 // need to build a loop to render each element of the asteroidsArray to the page. will go in gameLoop()
 
-
+function renderAsteroids() {
+    asteroidArray.forEach(e => {
+        e.render();
+    })
+}
 
 
 // CODE TO DETECT KEYBINDINGS
@@ -147,7 +151,7 @@ function detectMovement(e){
 
 function gameLoop() {
     clearCanvas();
-    
+    renderAsteroids();
     // when generateAsteroids was here it kept rerendering asteroids all over the page
     // asteroid15.render(); 
     player.render();
