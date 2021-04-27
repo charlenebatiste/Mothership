@@ -91,45 +91,45 @@ function spaceship(x, y, color, lineColor, lineWeight, width, height) {
         ctx.strokeRect(this.x, this.y, this.width, this.height);
       };
 }
-function spaceObject(x, y, color, lineColor, lineWeight, width, height) {
-    this.x = x;
-    this.y = y;
-    this.color = color;
-    this.lineColor = lineColor;
-    this.lineWeight = lineWeight;
-    this.width = width;
-    this.height = height;
+function spaceObject() {
+    var x = Math.floor(Math.random() * (game.width - 35));
+    var y = Math.floor(Math.random() * (game.height - 100));
+    // set y axis to random location and then subtracts 50 from game.height to avoid aseroids rndering over the player
+    let color = 'yellow';
+    let lineColor = 'brown';
+    let lineWeight = 2;
+    let width = 35;
+    let height = 35;
     this.render = function () {
-        ctx.fillStyle = this.color;
-        ctx.strokeStyle = this.lineColor;
-        ctx.strokeWidth = this.lineWeight;
-        ctx.fillRect(this.x, this.y, this.width, this.height);
-        ctx.strokeRect(this.x, this.y, this.width, this.height);
+        ctx.fillStyle = color;
+        ctx.strokeStyle = lineColor;
+        ctx.strokeWidth = lineWeight;
+        ctx.fillRect(x, y, width, height);
+        ctx.strokeRect(x, y, width, height);
       };
 }
 
-// SANDBOX
+// sets new asteroids equal to spaceObject // very repetitive // needs a short way to build this
+asteroid = new spaceObject();
+asteroid2 = new spaceObject();
+asteroid3 = new spaceObject();
+asteroid4 = new spaceObject();
+asteroid5 = new spaceObject();
+asteroid6 = new spaceObject();
+asteroid7 = new spaceObject();
+asteroid8 = new spaceObject();
+asteroid9 = new spaceObject();
+asteroid10 = new spaceObject();
+asteroid11 = new spaceObject();
+asteroid12 = new spaceObject();
+asteroid13 = new spaceObject();
+asteroid14 = new spaceObject();
+asteroid15 = new spaceObject();
 
-// equations for asteroid location randomizer
-let randomAsteroidX = Math.floor(Math.random() * (game.width - 35));
-let randomAsteroidY = Math.floor(Math.random() * (game.height - 35));
-// randomizes for 1 element. cannot pass these as arguments in other asteroids
-// because they will plot on top of each other. Need to run this in a for loop
-// and set the outcome to varying x and y positions for each asteroid.
+// need to build a loop that will set x number of asteroids equal to a new spaceObject element and then render each
+// of those x asteroids at the end of the function. that will be placed into the game loop after clearCanvas() and before
+// player.render();
 
-
-
-testAsteroid = new spaceObject(randomAsteroidX, randomAsteroidY, 'pink', 'brown', 2, 35, 35)
-
-// location of asteroids // very repetitive // needs a short way to build this
-asteroid = new spaceObject(300, 200, 'yellow', 'brown', 2, 35, 35);
-asteroid2 = new spaceObject(370, 140, 'yellow', 'brown', 2, 35, 35);
-asteroid3 = new spaceObject(200, 285, 'yellow', 'brown', 2, 35, 35);
-asteroid4 = new spaceObject(120, 420, 'yellow', 'brown', 2, 35, 35);
-asteroid5 = new spaceObject(385, 350, 'yellow', 'brown', 2, 35, 35);
-asteroid6 = new spaceObject(80, 200, 'yellow', 'brown', 2, 35, 35);
-asteroid7 = new spaceObject(180, 120, 'yellow', 'brown', 2, 35, 35);
-asteroid8 = new spaceObject(100, 360, 'yellow', 'brown', 2, 35, 35);
 
 
 // // CODE TO DETECT KEYBINDINGS
@@ -161,7 +161,13 @@ function gameLoop() {
     asteroid6.render();
     asteroid7.render();
     asteroid8.render();
-    testAsteroid.render();
+    asteroid9.render();
+    asteroid10.render();
+    asteroid11.render();
+    asteroid12.render();
+    asteroid13.render();
+    asteroid14.render();
+    asteroid15.render(); 
     player.render();
   }
 
@@ -169,7 +175,7 @@ function gameLoop() {
 
 // // WAITS FOR ALL CONTENTS OF PAGE TO LOAD BEFORE RENDERING GAME
 document.addEventListener("DOMContentLoaded", function () {
-    player = new spaceship(250, 525, "aquamarine", "hotpink", 2, 30, 30);
+    player = new spaceship(250, 550, "aquamarine", "hotpink", 2, 30, 30);
     document.addEventListener("keydown", detectMovement);
     runGame = setInterval(gameLoop, 60);
   });
