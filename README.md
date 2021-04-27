@@ -69,4 +69,27 @@ Initial Wireframe for Play Screen:
 
 ## Scratch Work:
 
-Scratch Work goes here -->
+Loops to generate random x and y axis of 20 asteroids
+
+```javascript
+function generateAsteroidX() {
+  for (var i = 0; i < 20; i++) {
+    var count = 0;
+    var loopEnd = Math.floor(Math.random() * (game.width - 35));
+    for (var j = 0; j < loopEnd; j++) {
+      count++;
+    }
+    console.log(count);
+  }
+}
+function generateAsteroidY() {
+  for (var i = 0; i < 20; i++) {
+    var count = 0;
+    var loopEnd = Math.floor(Math.random() * (game.height - 35));
+    for (var j = 0; j < loopEnd; j++) {
+      count++;
+    }
+    console.log(count);
+  }
+}
+```

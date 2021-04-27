@@ -44,7 +44,6 @@ abort.addEventListener('click', quitGame);
 
 function quitGame() {
     if (document.querySelector('.play-screen').style.display = 'block') {
-        clearCanvas();
         document.querySelector('.play-screen').style.display = 'none';
         document.querySelector('.start-screen').style.display = 'block';
         // console.log('you are about to change screens')
@@ -76,6 +75,22 @@ function clearCanvas() {
 
 
 // // FACTORY FUNCTION TO HELP BUILD ELEMENTS
+function spaceship(x, y, color, lineColor, lineWeight, width, height) {
+    this.x = x;
+    this.y = y;
+    this.color = color;
+    this.lineColor = lineColor;
+    this.lineWeight = lineWeight;
+    this.width = width;
+    this.height = height;
+    this.render = function () {
+        ctx.fillStyle = this.color;
+        ctx.strokeStyle = this.lineColor;
+        ctx.strokeWidth = this.lineWeight;
+        ctx.fillRect(this.x, this.y, this.width, this.height);
+        ctx.strokeRect(this.x, this.y, this.width, this.height);
+      };
+}
 function spaceObject(x, y, color, lineColor, lineWeight, width, height) {
     this.x = x;
     this.y = y;
@@ -101,6 +116,8 @@ let randomAsteroidY = Math.floor(Math.random() * (game.height - 35));
 // randomizes for 1 element. cannot pass these as arguments in other asteroids
 // because they will plot on top of each other. Need to run this in a for loop
 // and set the outcome to varying x and y positions for each asteroid.
+
+
 
 testAsteroid = new spaceObject(randomAsteroidX, randomAsteroidY, 'pink', 'brown', 2, 35, 35)
 
@@ -152,7 +169,7 @@ function gameLoop() {
 
 // // WAITS FOR ALL CONTENTS OF PAGE TO LOAD BEFORE RENDERING GAME
 document.addEventListener("DOMContentLoaded", function () {
-    player = new spaceObject(250, 525, "aquamarine", "hotpink", 2, 30, 30);
+    player = new spaceship(250, 525, "aquamarine", "hotpink", 2, 30, 30);
     document.addEventListener("keydown", detectMovement);
     runGame = setInterval(gameLoop, 60);
   });
