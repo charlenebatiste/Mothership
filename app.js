@@ -60,7 +60,8 @@ const game = document.getElementById("game");
 const ctx = game.getContext("2d");
 let runGame;
 let player;
-let asteroid;
+// let asteroid;
+const asteroidArray = [];
 
 
  // ESTABLISH HEIGHT AND WIDTH OF GAME SCREEN
@@ -91,6 +92,7 @@ function spaceship(x, y, color, lineColor, lineWeight, width, height) {
         ctx.strokeRect(this.x, this.y, this.width, this.height);
       };
 }
+
 function spaceObject() {
     var x = Math.floor(Math.random() * (game.width - 35));
     var y = Math.floor(Math.random() * (game.height - 100));
@@ -110,21 +112,31 @@ function spaceObject() {
 }
 
 // sets new asteroids equal to spaceObject // very repetitive // needs a short way to build this
-asteroid = new spaceObject();
-asteroid2 = new spaceObject();
-asteroid3 = new spaceObject();
-asteroid4 = new spaceObject();
-asteroid5 = new spaceObject();
-asteroid6 = new spaceObject();
-asteroid7 = new spaceObject();
-asteroid8 = new spaceObject();
-asteroid9 = new spaceObject();
-asteroid10 = new spaceObject();
-asteroid11 = new spaceObject();
-asteroid12 = new spaceObject();
-asteroid13 = new spaceObject();
-asteroid14 = new spaceObject();
-asteroid15 = new spaceObject();
+// asteroid = new spaceObject();
+// asteroid2 = new spaceObject();
+// asteroid3 = new spaceObject();
+// asteroid4 = new spaceObject();
+// asteroid5 = new spaceObject();
+// asteroid6 = new spaceObject();
+// asteroid7 = new spaceObject();
+// asteroid8 = new spaceObject();
+// asteroid9 = new spaceObject();
+// asteroid10 = new spaceObject();
+// asteroid11 = new spaceObject();
+// asteroid12 = new spaceObject();
+// asteroid13 = new spaceObject();
+// asteroid14 = new spaceObject();
+// asteroid15 = new spaceObject();
+
+function generateAsteroids () {
+    for (let i = 0; i < 15; i++) {
+    // 15 is the set number of asteroids to build
+        asteroidArray.push('asteroid')
+    }
+    // console.log(asteroidArray)
+}
+
+
 
 // need to build a loop that will set x number of asteroids equal to a new spaceObject element and then render each
 // of those x asteroids at the end of the function. that will be placed into the game loop after clearCanvas() and before
@@ -132,42 +144,49 @@ asteroid15 = new spaceObject();
 
 
 
+function generateSpaceObjects () {
+    generateAsteroids();
+    for (let i = 0; i <= asteroidArray.length; i++) {
+        console.log(asteroidArray);
+        asteroidArray[i] = new spaceObject;
+    }
+}
+
+
+
 // // CODE TO DETECT KEYBINDINGS
 
    function detectMovement(e){
         if(e.which === 32){
-            console.log(player)
             player.y -= 10
-            // console.log('you are pressing space')
             //  player ship will move 10 up
         } else if (e.which === 37){
             player.x -= 10
-            // console.log('you are pressing the left arrow')
             //  player ship will move 10 left
         }else if (e.which === 39){
             player.x += 10
-            // console.log('you are pressing the right arrow')
             //  player ship will move 10 right
         }
    }
 
 function gameLoop() {
     clearCanvas();
-    asteroid.render();
-    asteroid2.render();
-    asteroid3.render();
-    asteroid4.render();
-    asteroid5.render();
-    asteroid6.render();
-    asteroid7.render();
-    asteroid8.render();
-    asteroid9.render();
-    asteroid10.render();
-    asteroid11.render();
-    asteroid12.render();
-    asteroid13.render();
-    asteroid14.render();
-    asteroid15.render(); 
+    // generateSpaceObjects();
+    // asteroid.render();
+    // asteroid2.render();
+    // asteroid3.render();
+    // asteroid4.render();
+    // asteroid5.render();
+    // asteroid6.render();
+    // asteroid7.render();
+    // asteroid8.render();
+    // asteroid9.render();
+    // asteroid10.render();
+    // asteroid11.render();
+    // asteroid12.render();
+    // asteroid13.render();
+    // asteroid14.render();
+    // asteroid15.render(); 
     player.render();
   }
 
