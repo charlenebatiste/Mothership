@@ -147,6 +147,7 @@ function detectMovement(e){
         //  player ship will move 10 right
     }
     detectImpact();
+    gameWon();
 }
 
 // COLLISION DETECTION
@@ -158,19 +159,33 @@ function detectImpact() {
         player.y < e.y + e.height &&
         player.x + player.width > e.x &&
         player.x < e.x + e.width);
-        // console.log(test);
         if (test == true) {
-                console.log('impact alert');
+                console.log('impact alert: Game over');
                 gameOver();
-            }
-            
+            }  
     })
 }
 
 function gameOver() {
     let gameOver = document.createElement('div');
+    gameOver.style.position = 'absolute';
+    gameOver.style.top = '5em';
+    gameOver.style.right = '5em';
     gameOver.textContent = "Game Over: Collision Detected";
     document.querySelector('.play-screen').appendChild(gameOver);
+}
+
+function gameWon() {
+    const test = (player.y + player.height > mothership.y &&
+        player.y < mothership.y + mothership.height &&
+        player.x + player.width > mothership.x &&
+        player.x < mothership.x + mothership.width);
+        if (test == true) {
+            console.log('you made it to the mothership')
+            let winner = document.createElement('div');
+            winner.textContent = "YOU WON!";
+            document.querySelector('.play-screen').appendChild(winner);
+        }
 }
 
 // FUNCTION THAT CONTROLS THE LIFE CYCLE OF A GAME [ FROM PLAY TO GAME OVER ]
@@ -180,6 +195,7 @@ function gameLoop() {
     renderAsteroids();
         // this takes each element inside of the populated asteroidsArray and renders them to the page
     player.render();
+    mothership.render();
   }
 
 
@@ -187,6 +203,7 @@ function gameLoop() {
 
 document.addEventListener("DOMContentLoaded", function () {
     player = new spaceship(250, 550, "aquamarine", "hotpink", 2, 30, 30);
+    mothership = new spaceship(180, 0, 'limegreen', 'black', 2, 150, 10);
     document.addEventListener("keydown", detectMovement);
     generateAsteroids();
         // this fills the asteroidsArray with asteroids and sets the elements to spaceObjects

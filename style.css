@@ -19,6 +19,7 @@ body {
 
 .play-screen {
     display: none;
+    position: relative;
 }
 
  #game { 

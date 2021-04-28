@@ -45,7 +45,7 @@
 - [x] What are your goals for today?
 - [x] Do you have any blockers?
 
-1. I repaired bad data in the spaceObject factory function and built the detectImpact function.
+1. I repaired bad data in the spaceObject factory function and built the detectImpact function. On impact with a asteroid the console logs 'game over'. I also created a mothership object and on impact with the mothership, the console logs "you won".
 2. RESPONSE
 3. RESPONSE
 
