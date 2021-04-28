@@ -56,7 +56,7 @@
             </div>
         </footer>
     </div>
-    <!-- Modal -->
+    <!-- Instructions Modal -->
     <div class="modal fade" id="instructionsModal" tabindex="-1" aria-labelledby="instructionsModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
@@ -87,9 +87,24 @@
 
         </canvas>
         <aside id="btm-left">
-            <h2 id="scoreTracker">SCORE</h2>
             <h2 id="score">0</h2></aside>
     </div> 
+    <!-- Game Over Modal -->
+    <div id="gameoverModal" class="game-over-modal">
+        <div class="gameover-content">
+          <h1>Game Over</h1>
+          <h2>Collision Detected</h2>
+          <button class="gameover-close" id="tryagain">Try Again</button>
+        </div>
+      </div>
+    <!-- You Won Modal -->
+    <div id="youwonModal" class="you-won-modal">
+        <div class="youwon-content">
+          <h1>Congratulations</h1>
+          <p>You made it to the Mothership</p>
+          <button class="youwon-close" id="close">Close</button>
+        </div>
+      </div>
         
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
     <script src="./app.js"></script>

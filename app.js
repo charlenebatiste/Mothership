@@ -166,19 +166,8 @@ function detectImpact() {
 }
 
 function gameOver() {
-    let gameOver = document.createElement('div');
-    gameOver.style.position = 'absolute';
-    gameOver.style.height = '30vh';
-    gameOver.style.width = '30vw';
-    gameOver.style.top = '20em';
-    gameOver.style.backgroundColor = 'crimson';
-    gameOver.style.color = 'white';
-    gameOver.style.left = '7em';
-    gameOver.textContent = "Game Over: Collision Detected";
-    let tryAgain = document.createElement('button');
-    tryAgain.textContent = "Try Again";
-    document.querySelector('.play-screen').appendChild(gameOver);
-    gameOver.appendChild(tryAgain);
+    document.getElementById('gameoverModal').style.display = 'block';
+    let tryAgain = document.getElementById('tryagain');
     tryAgain.addEventListener('click', ( )=> {
         reset();
     });
@@ -190,23 +179,12 @@ function gameWon() {
         player.x + player.width > mothership.x &&
         player.x < mothership.x + mothership.width);
         if (test == true) {
-            let winner = document.createElement('div');
-            winner.style.position = 'absolute';
-            winner.style.height = '30vh';
-            winner.style.width = '30vw';
-            winner.style.top = '20em';
-            winner.style.backgroundColor = 'white';
-            winner.style.color = 'black';
-            winner.style.left = '7em';
-            winner.textContent = "Congratulations! You made it to the Mothership!";
-            let end = document.createElement('button');
-            end.textContent = "End";
-            document.querySelector('.play-screen').appendChild(winner);
-            winner.appendChild(end);
-            end.addEventListener('click', ( )=> {
-                reset();
-            });
-        }
+    document.getElementById('youwonModal').style.display = 'block';
+    let close = document.getElementById('close');
+    close.addEventListener('click', ( )=> {
+        reset();
+    });
+}
 }
 
 // 
