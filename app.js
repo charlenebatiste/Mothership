@@ -130,12 +130,15 @@ function renderAsteroids() {
     })
 }
 
-// CODE TO DETECT KEYBINDINGS
+// CODE TO DETECT KEYBINDINGS and TRACK/ADJUST SCORE DISPLAY
 
 function detectMovement(e){
     if(e.which === 32){
+        let newScore = parseInt(score.innerText)
         player.y -= 10
         //  player ship will move 10 up
+        newScore+=50
+        score.innerText = newScore
     } else if (e.which === 37){
         player.x -= 10
         //  player ship will move 10 left
@@ -144,13 +147,6 @@ function detectMovement(e){
         //  player ship will move 10 right
     }
 }
-
-// SCORE TRACKER
-
-// function scoreTracker() {
-//     let score = 0;
-//     // for each 10 that the ship moves closer to zero, the score will add 100
-// }
 
 // COLLISION DETECTION
 
