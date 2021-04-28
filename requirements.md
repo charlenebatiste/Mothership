@@ -6,10 +6,10 @@
 - [ ] Live Site
 - [ ] Regrade
 - [ ] Status
-- [ ] Game is playable
+- [✓] Game is playable
 - [✓] Game is multiplayer
   (or AI or PVE)
-- [ ] Game is winnable
+- [✓] Game is winnable
 - [✓] Winner/score is displayed (NO ALERTS)
 - [✓] Has directions - How to Play
 - [ ] Readme.md included and filled out
@@ -17,5 +17,5 @@
 - [ ] Deployed on Github Pages
 - [ ] DRY (Do Not Repeat Yourself) Code, Good Code Style
 - [✓] Effort Put into Styling
-- [ ] Reset button
-- [ ] Good collision detection/event triggers
+- [✓] Reset button
+- [✓] Good collision detection/event triggers

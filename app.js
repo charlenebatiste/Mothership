@@ -160,7 +160,6 @@ function detectImpact() {
         player.x + player.width > e.x &&
         player.x < e.x + e.width);
         if (test == true) {
-                console.log('impact alert: Game over');
                 gameOver();
             }  
     })
@@ -169,10 +168,21 @@ function detectImpact() {
 function gameOver() {
     let gameOver = document.createElement('div');
     gameOver.style.position = 'absolute';
-    gameOver.style.top = '5em';
-    gameOver.style.right = '5em';
+    gameOver.style.height = '30vh';
+    gameOver.style.width = '30vw';
+    gameOver.style.top = '20em';
+    gameOver.style.backgroundColor = 'crimson';
+    gameOver.style.color = 'white';
+    gameOver.style.left = '7em';
     gameOver.textContent = "Game Over: Collision Detected";
+    let tryAgain = document.createElement('button');
+    tryAgain.textContent = "Try Again";
     document.querySelector('.play-screen').appendChild(gameOver);
+    gameOver.appendChild(tryAgain);
+    tryAgain.addEventListener('click', ( )=> {
+        window.location.reload();
+        // this reloaads the entire window which will reset the game loop
+    });
 }
 
 function gameWon() {
