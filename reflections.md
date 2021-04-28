@@ -35,9 +35,9 @@
 - [x] What are your goals for today?
 - [x] Do you have any blockers?
 
-1. Yesterday I built an two asteroid functions and refactored the factory functioni for the spaceObject to create a more efficient way to assign and render the asteroids to the page in random locations.
-2. Today I will build and complete the detectImpact function and I will build a functioning scoreboard.
-3. I've realized I tend to make writting coed harder than necessary and want to focuss on keeping evreything simple.
+1. Yesterday I built an two asteroid functions and refactored the factory functioni for the spaceObject to create a more efficient way to assign and render the asteroids to the page in random locations. I also built a functioning scoreboard that changes the display during game play.
+2. Today I will build and complete the detectImpact function.
+3. I've realized I tend to make writting code harder than necessary and want to focuss on keeping evreything simple.
 
 # Thursday
 
