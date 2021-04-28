@@ -46,7 +46,7 @@ function quitGame() {
     if (document.querySelector('.play-screen').style.display = 'block') {
         document.querySelector('.play-screen').style.display = 'none';
         document.querySelector('.start-screen').style.display = 'block';
-        // console.log('you are about to change screens')
+        reset();
     }
 }
 
@@ -115,7 +115,7 @@ function spaceObject() {
 
 function generateAsteroids () {
     let asteroid;
-    for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < 20; i++) {
     // 15 is the set number of asteroids to build
         asteroid = new spaceObject;
         asteroidArray.push(asteroid)
@@ -180,8 +180,7 @@ function gameOver() {
     document.querySelector('.play-screen').appendChild(gameOver);
     gameOver.appendChild(tryAgain);
     tryAgain.addEventListener('click', ( )=> {
-        window.location.reload();
-        // this reloaads the entire window which will reset the game loop
+        reset();
     });
 }
 
@@ -191,11 +190,29 @@ function gameWon() {
         player.x + player.width > mothership.x &&
         player.x < mothership.x + mothership.width);
         if (test == true) {
-            console.log('you made it to the mothership')
             let winner = document.createElement('div');
-            winner.textContent = "YOU WON!";
+            winner.style.position = 'absolute';
+            winner.style.height = '30vh';
+            winner.style.width = '30vw';
+            winner.style.top = '20em';
+            winner.style.backgroundColor = 'white';
+            winner.style.color = 'black';
+            winner.style.left = '7em';
+            winner.textContent = "Congratulations! You made it to the Mothership!";
+            let end = document.createElement('button');
+            end.textContent = "End";
             document.querySelector('.play-screen').appendChild(winner);
+            winner.appendChild(end);
+            end.addEventListener('click', ( )=> {
+                reset();
+            });
         }
+}
+
+// 
+function reset () {
+    window.location.reload();
+        // this reloaads the entire window which will reset the game loop
 }
 
 // FUNCTION THAT CONTROLS THE LIFE CYCLE OF A GAME [ FROM PLAY TO GAME OVER ]
