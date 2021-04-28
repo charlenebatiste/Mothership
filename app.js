@@ -145,6 +145,13 @@ function detectMovement(e){
     }
 }
 
+// SCORE TRACKER
+
+// function scoreTracker() {
+//     let score = 0;
+//     // for each 10 that the ship moves closer to zero, the score will add 100
+// }
+
 // COLLISION DETECTION
 
 
