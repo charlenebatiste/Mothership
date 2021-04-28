@@ -45,7 +45,7 @@
 - [x] What are your goals for today?
 - [x] Do you have any blockers?
 
-1. RESPONSE
+1. I repaired bad data in the spaceObject factory function and built the detectImpact function.
 2. RESPONSE
 3. RESPONSE
 

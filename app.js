@@ -93,21 +93,21 @@ function spaceship(x, y, color, lineColor, lineWeight, width, height) {
 }
 
 function spaceObject() {
-    var x = Math.floor(Math.random() * (game.width - 35));
-    var y = Math.floor(Math.random() * (game.height - 100));
+    this.x = Math.floor(Math.random() * (game.width - 35));
+    this.y = Math.floor(Math.random() * (game.height - 100));
     // set y axis to random location and then subtracts 50 from game.height to avoid aseroids rndering over the player
     let color = 'yellow';
     let lineColor = 'brown';
     let lineWeight = 2;
-    let width = 38;
-    let height = 38;
-    this.hit = false;
+    this.width = 38;
+    this.height = 38;
+    this.impact = false;
     this.render = function () {
         ctx.fillStyle = color;
         ctx.strokeStyle = lineColor;
         ctx.strokeWidth = lineWeight;
-        ctx.fillRect(x, y, width, height);
-        ctx.strokeRect(x, y, width, height);
+        ctx.fillRect(this.x, this.y, this.width, this.height);
+        ctx.strokeRect(this.x, this.y, this.width, this.height);
       };
 }
 
@@ -146,6 +146,7 @@ function detectMovement(e){
         player.x += 10
         //  player ship will move 10 right
     }
+    detectImpact();
 }
 
 // COLLISION DETECTION
@@ -153,17 +154,24 @@ function detectMovement(e){
 
 function detectImpact() {
     asteroidArray.forEach(e => {
-        if (player.y + player.height > e.y &&
-            player.y < e.y + e.height &&
-            player.x + player.width > e.x &&
-            player.x < e.x + e.width) {
-        console.log('impact alert!!!!');
-        } else {
-            return console.log('clear skies, captain');
-        }
-    });
+        const test = (player.y + player.height > e.y &&
+        player.y < e.y + e.height &&
+        player.x + player.width > e.x &&
+        player.x < e.x + e.width);
+        // console.log(test);
+        if (test == true) {
+                console.log('impact alert');
+                gameOver();
+            }
+            
+    })
 }
-    //   above function only logs 'clear skies captian' ~~~ i dont think the equation for collision works for this case
+
+function gameOver() {
+    let gameOver = document.createElement('div');
+    gameOver.textContent = "Game Over: Collision Detected";
+    document.querySelector('.play-screen').appendChild(gameOver);
+}
 
 // FUNCTION THAT CONTROLS THE LIFE CYCLE OF A GAME [ FROM PLAY TO GAME OVER ]
 
@@ -172,7 +180,6 @@ function gameLoop() {
     renderAsteroids();
         // this takes each element inside of the populated asteroidsArray and renders them to the page
     player.render();
-    // detectImpact();  
   }
 
 
@@ -186,5 +193,3 @@ document.addEventListener("DOMContentLoaded", function () {
     runGame = setInterval(gameLoop, 60);
     
   });
-
-  
