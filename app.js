@@ -60,11 +60,10 @@ const game = document.getElementById("game");
 const ctx = game.getContext("2d");
 let runGame;
 let player;
-// let asteroid;
 const asteroidArray = [];
 
 
- // ESTABLISH HEIGHT AND WIDTH OF GAME SCREEN
+// ESTABLISH HEIGHT AND WIDTH OF GAME SCREEN
 
 game.setAttribute('width', '500');
 game.setAttribute('height', '600');
@@ -100,8 +99,9 @@ function spaceObject() {
     let color = 'yellow';
     let lineColor = 'brown';
     let lineWeight = 2;
-    let width = 35;
-    let height = 35;
+    let width = 38;
+    let height = 38;
+    this.hit = false;
     this.render = function () {
         ctx.fillStyle = color;
         ctx.strokeStyle = lineColor;
@@ -113,17 +113,14 @@ function spaceObject() {
 
 // FUNCTION TO FILL ASTROIDARRAY WITH ASTEROIDS AND SETS EACH ASTEROID EQUAL TO SPACE OBJECT
 
-
 function generateAsteroids () {
     let asteroid;
-    for (let i = 0; i <= 15; i++) {
+    for (let i = 0; i < 15; i++) {
     // 15 is the set number of asteroids to build
         asteroid = new spaceObject;
         asteroidArray.push(asteroid)
-        // asteroid.render();
     }
 }
-
 
 // FUNCTION TO RENDER EACH ELEMENT OF ASTEROIDARRAY TO THE PAGE
 
@@ -132,7 +129,6 @@ function renderAsteroids() {
         e.render();
     })
 }
-
 
 // CODE TO DETECT KEYBINDINGS
 
@@ -149,16 +145,36 @@ function detectMovement(e){
     }
 }
 
+// COLLISION DETECTION
+
+
+function detectImpact() {
+    asteroidArray.forEach(e => {
+        if (player.y + player.height > e.y &&
+            player.y < e.y + e.height &&
+            player.x + player.width > e.x &&
+            player.x < e.x + e.width) {
+        console.log('impact alert!!!!');
+        } else {
+            return console.log('clear skies, captain');
+        }
+    });
+}
+    //   above function only logs 'clear skies captian' ~~~ i dont think the equation for collision works for this case
+
+// FUNCTION THAT CONTROLS THE LIFE CYCLE OF A GAME [ FROM PLAY TO GAME OVER ]
+
 function gameLoop() {
     clearCanvas();
     renderAsteroids();
         // this takes each element inside of the populated asteroidsArray and renders them to the page
     player.render();
+    // detectImpact();  
   }
 
 
-
 // // WAITS FOR ALL CONTENTS OF PAGE TO LOAD BEFORE RENDERING GAME
+
 document.addEventListener("DOMContentLoaded", function () {
     player = new spaceship(250, 550, "aquamarine", "hotpink", 2, 30, 30);
     document.addEventListener("keydown", detectMovement);
