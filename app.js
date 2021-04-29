@@ -12,6 +12,15 @@ let runGame;
 let player;
 const asteroidArray = [];
 
+let newScore = parseInt(score.innerText);
+
+var asteroidImage = new Image();
+asteroidImage.src = './assets/asteroid.svg';
+
+
+var playerImage = new Image();
+playerImage.src = './assets/alien-ship.png';
+
 // go to play screen using BLAST OFF button
 
 start.addEventListener('click', playGame);
@@ -63,6 +72,23 @@ function spaceship(x, y, color, lineColor, lineWeight, width, height, speed) {
         ctx.fillStyle = this.color;
         ctx.strokeStyle = this.lineColor;
         ctx.strokeWidth = this.lineWeight;
+        renderPlayerImage(this.x, this.y);
+      };
+}
+
+function Mothership(x, y, color, lineColor, lineWeight, width, height, speed) {
+    this.x = x;
+    this.y = y;
+    this.color = color;
+    this.lineColor = lineColor;
+    this.lineWeight = lineWeight;
+    this.width = width;
+    this.height = height;
+    this.speed = speed;
+    this.render = function () {
+        ctx.fillStyle = this.color;
+        ctx.strokeStyle = this.lineColor;
+        ctx.strokeWidth = this.lineWeight;
         ctx.fillRect(this.x, this.y, this.width, this.height);
         ctx.strokeRect(this.x, this.y, this.width, this.height);
       };
@@ -75,15 +101,16 @@ function spaceObject() {
     let color = 'yellow';
     let lineColor = 'brown';
     let lineWeight = 2;
-    this.width = 38;
-    this.height = 38;
+    this.width = 45;
+    this.height = 45;
     this.impact = false;
     this.render = function () {
         ctx.fillStyle = color;
         ctx.strokeStyle = lineColor;
         ctx.strokeWidth = lineWeight;
-        ctx.fillRect(this.x, this.y, this.width, this.height);
-        ctx.strokeRect(this.x, this.y, this.width, this.height);
+        // ctx.strokeRect(this.x, this.y, this.width, this.height);
+            // this shows the impact zone for the asteroid
+        renderImage(this.x, this.y)
       };
 }
 
@@ -106,9 +133,20 @@ function renderAsteroids() {
     })
 }
 
-// CODE TO DETECT KEYBINDINGS and TRACK/ADJUST SCORE DISPLAY
+// FUNCTION TO DRAW THE ASTEROIDIMAGE TO CANVAS AND RENDER
 
-let newScore = parseInt(score.innerText);
+function renderImage(x, y) {
+    ctx.drawImage(asteroidImage, x, y, 45, 45);
+}
+ asteroidImage.onload = renderImage
+
+
+function renderPlayerImage(x, y) {
+    ctx.drawImage(playerImage, x, y, 35, 35);
+}
+ playerImage.onload = renderPlayerImage
+
+// CODE TO DETECT KEYBINDINGS and TRACK/ADJUST SCORE DISPLAY
 
 function detectMovement(e){
     if(e.which === 32){
@@ -141,7 +179,7 @@ function detectImpact() {
         if (test == true) {
             player.speed = 0;
             gameOver();
-            }  
+        }  
     })
 }
 
@@ -157,14 +195,15 @@ function gameOver() {
         document.getElementById('gameoverModal').style.display = 'none';
         resetGameboard();
     }
-    )}
+)}
 
 function gameWon() {
-    const test = (player.y + player.height > mothership.y &&
-        player.y < mothership.y + mothership.height &&
-        player.x + player.width > mothership.x &&
-        player.x < mothership.x + mothership.width);
+    const test = (player.y + player.height > landingDock.y &&
+        player.y < landingDock.y + landingDock.height &&
+        player.x + player.width > landingDock.x &&
+        player.x < landingDock.x + landingDock.width);
         if (test == true) {
+            player.speed = 0;
             document.getElementById('youwonModal').style.display = 'block';
             let close = document.getElementById('close');
             close.addEventListener('click', ( )=> {
@@ -195,33 +234,18 @@ function gameLoop() {
     renderAsteroids();
         // this takes each element inside of the populated asteroidsArray and renders them to the page
     player.render();
-    mothership.render();
+    landingDock.render();
+    renderImage();
+    renderPlayerImage();
   }
-
-
-//   sandbox
-// var img = new Image();   // Create new img element
-// function drawImage() {
-//     ctx.drawImage(img, 0, 0, 35, 35);
-//   };
-// img.src = './assets/alien-ship.png'; // Set source path
-
-// var imageObj = new Image();
-
-//       imageObj.onload = function() {
-//         ctx.drawImage(imageObj, 150, 50);
-//       };
-//       imageObj.src = 'https://2.bp.blogspot.com/-zG9DW_y7QPY/V18N7z7JfHI/AAAAAAAABhw/Ucgnsq36e1U4jzSDxlbpfzTl1f-KYi4YQCK4B/s1600/fabicon-big.jpg';
-  
 
 // // WAITS FOR ALL CONTENTS OF PAGE TO LOAD BEFORE RENDERING GAME
 
 document.addEventListener("DOMContentLoaded", function () {
     player = new spaceship(250, 550, "aquamarine", "hotpink", 2, 30, 30, 10);
-    mothership = new spaceship(180, 0, 'limegreen', 'black', 2, 150, 10, 0);
+    landingDock = new Mothership(180, 0, 'limegreen', 'black', 2, 150, 10, 0);
     document.addEventListener("keydown", detectMovement);
     generateAsteroids();
         // this fills the asteroidsArray with asteroids and sets the elements to spaceObjects
-    runGame = setInterval(gameLoop, 60);
-    
+        runGame = setInterval(gameLoop, 60);
   });

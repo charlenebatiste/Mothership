@@ -95,6 +95,7 @@ Initial Wireframe for Play Screen:
 1. I would like to add some sort of animations to the asteroids so they move across the screen rather than remaining stationary.
 2. I would like to have a slow feature on the thrust key so the ship slows after the player releases the spacebar rather than stopping immediately.
 3. I would like to build a blaster feature into the players ship to shoot elements out of the sky for extra points.
+4. I would like the player ship to explode on impact with any asteroid.
 
 ## Scratch Work:
 
