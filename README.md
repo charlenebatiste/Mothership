@@ -34,8 +34,36 @@ _Images of the start up screen go here_
 
 ## How it Works
 
-How the game works will go here
-Code snippets go here
+1. Once the canvas dimensons are set, the mothership and player ship are set equal to a new spaceShip factory function that takes their arguments and renders them accordingly.
+2. The process to render the asteroids starts with filling an empty asteroidArray with asteroids on page load and then setting them equal to another factory function called spaceObjects. Since I wanted all the asteroids to have the same general look, a majority of the values were hard coded while an equation was writtien into the spaceObjects function to generate a random x and y location for each individual asteroid.
+
+```javascript
+function spaceObject() {
+  this.x = Math.floor(Math.random() * (game.width - 35));
+  this.y = Math.floor(Math.random() * (game.height - 100));
+  let color = "yellow";
+  let lineColor = "brown";
+  let lineWeight = 2;
+  this.width = 38;
+  this.height = 38;
+  this.impact = false;
+  this.render = function () {
+    ctx.fillStyle = color;
+    ctx.strokeStyle = lineColor;
+    ctx.strokeWidth = lineWeight;
+    ctx.fillRect(this.x, this.y, this.width, this.height);
+    ctx.strokeRect(this.x, this.y, this.width, this.height);
+  };
+}
+```
+
+_Extra dimensions were subtracted from the x and y axis to avoid asteroids rendering partially off of the canvas or over the player ship, which would immediately end the game_
+
+3. Keybindings were set to move the player ship and collision functions were built to either end or win the game (depending on whether the player impacted with an asteroid or the Mothership).
+
+4. A score display was built into the detectMovement function so the player would ain 50pts to their score for every movement towards the 0 x axis.
+
+5. Two functions where written that would either end the game and send the player back to the start screen or allow the player to retry the map they were just playing by resetting the score and rerendering the player back tot he start position.
 
 ## Setup
 

@@ -91,7 +91,7 @@ function spaceObject() {
 
 function generateAsteroids () {
     let asteroid;
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 25; i++) {
     // 15 is the set number of asteroids to build
         asteroid = new spaceObject;
         asteroidArray.push(asteroid)
@@ -114,29 +114,20 @@ function detectMovement(e){
     if(e.which === 32){
         player.y -= player.speed
         //  player ship will move 10 up
-        newScore+=50
-        score.innerText = newScore
+        if (player.speed !== 0) {
+            newScore+=50
+            score.innerText = newScore
+         }
     } else if (e.which === 37){
         player.x -= player.speed
         //  player ship will move 10 left
-    }else if (e.which === 39){
+    } else if (e.which === 39){
         player.x += player.speed
         //  player ship will move 10 right
     }
     detectImpact();
     gameWon();
 }
-
-// gui update
-
-// function updateScoreDisplay(bool){
-//     if(player.y === -10){
-//       newScore+=100
-//       score.innerText = newScore
-//     } else {
-//         newScore+=0;
-//     }
-//   }
 
 // COLLISION DETECTION
 
