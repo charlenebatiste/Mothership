@@ -37,7 +37,7 @@
 
 1. Yesterday I built an two asteroid functions and refactored the factory functioni for the spaceObject to create a more efficient way to assign and render the asteroids to the page in random locations. I also built a functioning scoreboard that changes the display during game play.
 2. Today I will build and complete the detectImpact function.
-3. I've realized I tend to make writting code harder than necessary and want to focuss on keeping evreything simple.
+3. I've realized I tend to make writting code harder than necessary and want to focus on keeping evreything simple.
 
 # Thursday
 
@@ -45,7 +45,7 @@
 - [x] What are your goals for today?
 - [x] Do you have any blockers?
 
-1. I repaired bad data in the spaceObject factory function and built the detectImpact function. On impact with a asteroid the console logs 'game over'. I also created a mothership object and on impact with the mothership, the console logs "you won".
+1. I repaired bad data in the spaceObject factory function and built the detectImpact function. On impact with a asteroid the console logs 'game over'. I also created a mothership object and on impact with the mothership, the console logs "you won". I built modals that are called when either of those functions are true that lets the player quit the game or restart.
 2. RESPONSE
 3. RESPONSE
 

@@ -23,6 +23,26 @@ body {
     position: relative;
 }
 
+.grid-screen{
+    max-width: 50em;
+    height: 90vh; 
+    margin: 0 auto;
+    padding: 1em;
+    display: grid;
+    grid-gap: 1em;
+    grid-template-rows: .5fr .5fr .5fr .8fr;
+    grid-template-columns: .5fr .5fr .5fr .8fr;
+    grid-template-areas: "top-left top-left top-right top-right"
+                          "game game game center-top"
+                          "game game game center-btm"
+}
+
+#top-left, #top-right{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
  #game { 
     border: .5em solid rgb(56, 100, 126);
     background-color: white;
@@ -42,6 +62,38 @@ body {
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0, 0, 0, 0.534); /* Black w/ opacity */
 }
+
+#top-left {
+    grid-area: top-left;
+  }
+  
+  #top-right {
+    grid-area: top-right;
+  }
+  .quit {
+    padding: .5em 1em;
+    background-color: red;
+    color: white;
+  }
+  .quit:hover{
+      background-color: blanchedalmond;
+      color: brown;
+  }
+
+  main {
+    grid-area: game;
+  }
+  
+  #center-top {
+    grid-area: center-top;
+    text-align: center;
+    padding-left: 1em; 
+  }
+  
+  #center-btm {
+    grid-area: center-btm;
+    padding-left: 1em; 
+  } 
   
   /* Modal Content/Box */
   .gameover-content {
@@ -64,6 +116,7 @@ body {
     color: black;
     font-weight: bold;
   }
+
  /* Player Won Modal (background) */
 .you-won-modal {
     display: none; /* Hidden by default */
@@ -80,13 +133,13 @@ body {
   
   /* Modal Content/Box */
   .youwon-content {
-    background-color: rgb(45, 161, 35);
+    background-color: rgb(37, 170, 25);
     color: black;
     margin: 20% auto; /* 20% from the top and centered */
     padding: 20px;
-    border: 2px solid rgb(201, 100, 17);
-    height: 45vh;
-    width: 50%; /* Could be more or less, depending on screen size */
+    border: 2px solid rgb(17, 201, 109);
+    height: 40vh;
+    width: 40%; /* Could be more or less, depending on screen size */
     text-align: center;
 }
 

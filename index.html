@@ -79,16 +79,29 @@
         </div>
     </div>
      <!-- Canvas -->
-     <div class="play-screen">
-        <button type="button" class="quit" id="quitGame">ABORT MISSION</button>
-        <aside id="top-left"><h2>MOTHERSHIP</h2></aside>
-        
-        <canvas id='game'>
-
-        </canvas>
-        <aside id="btm-left">
-            <h2 id="score">0</h2></aside>
+    <div class="play-screen">
+        <div class="grid-screen">
+        <aside id="top-left">
+            <h1>MOTHERSHIP</h1>
+        </aside>
+        <div id="top-right">
+            <button type="button" class="quit" id="quitGame">ABORT MISSION</button>
+        </div>
+        <main>
+            <canvas id='game'></canvas>
+        </main>
+        <aside id="center-top">
+            <h1>Score:</h1>
+            <h2 id="score">0</h2>
+        </aside>
+        <aside class="keybindings" id="center-btm">
+            <p id="status">press the spacebar for thrust</p>
+            <p id="status">press the right arrow to move right</p>
+            <p id="status">press the left arrow to move left</p>
+        </aside>
+    </div>
     </div> 
+
     <!-- Game Over Modal -->
     <div id="gameoverModal" class="game-over-modal">
         <div class="gameover-content">
