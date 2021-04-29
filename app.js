@@ -1,60 +1,10 @@
-// ~~~ START SCREEN SCRIPT ~~~
+// GLOBAL VARIABLES
 
-// button variables
-const instructions = document.getElementById('instructions');
 const start = document.getElementById('start');
 const abort = document.getElementById('quitGame');
 
-// added hover feature to buttons
-
-instructions.addEventListener("mouseover", () => {
-    // console.log('testing i am over the button');
-    instructions.style.backgroundColor = "#cbc3e3";
-    instructions.style.fontStyle = "italic";
-})
-instructions.addEventListener("mouseout", () => {
-    instructions.style.backgroundColor = "#0dcaf0";
-    instructions.style.fontStyle = "normal";
-})
-
-start.addEventListener("mouseover", () => {
-    start.style.backgroundColor = "#93DB70";
-    start.style.fontStyle = "italic";
-})
-start.addEventListener("mouseout", () => {
-    start.style.backgroundColor = "#ffca2c";
-    start.style.fontStyle = "normal";
-})
-
-// go to play screen using BLAST OFF button
-
-start.addEventListener('click', playGame);
-
-function playGame() {
-    if (document.querySelector('.start-screen').style.display = 'block') {
-        document.querySelector('.start-screen').style.display = 'none';
-        document.querySelector('.play-screen').style.display = 'block';
-        // console.log('you are about to change screens')
-    }
-}
-
-// go to start screen using ABORT MISSION button
-
-abort.addEventListener('click', quitGame);
-
-function quitGame() {
-    if (document.querySelector('.play-screen').style.display = 'block') {
-        document.querySelector('.play-screen').style.display = 'none';
-        document.querySelector('.start-screen').style.display = 'block';
-        reset();
-    }
-}
-
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-// ~~~ GAME SCREEN SCRIPT ~~~
-
-// GLOBAL VARIABLES
+const mainScreen = document.querySelector('.start-screen');
+const playScreen = document.querySelector('.play-screen');
 
 const game = document.getElementById("game");
 const ctx = game.getContext("2d");
@@ -62,6 +12,30 @@ let runGame;
 let player;
 const asteroidArray = [];
 
+// go to play screen using BLAST OFF button
+
+start.addEventListener('click', playGame);
+
+function playGame() {
+    if (mainScreen.style.display = 'block') {
+        mainScreen.style.display = 'none';
+        playScreen.style.display = 'block';
+    }
+}
+
+// quits game and resets page -> takes player back to start screen
+
+abort.addEventListener('click', quitGame);
+
+function quitGame() {
+    if (playScreen.style.display = 'block') {
+        playScreen.style.display = 'none';
+        mainScreen.style.display = 'block';
+        reset();
+    }
+}
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 // ESTABLISH HEIGHT AND WIDTH OF GAME SCREEN
 
@@ -69,13 +43,14 @@ game.setAttribute('width', '500');
 game.setAttribute('height', '600');
 
 // FUNCTION TO CLEAR CANVAS
+
 function clearCanvas() {
     ctx.clearRect(0, 0, game.width, game.height);
   }
 
-
 // // FACTORY FUNCTION TO HELP BUILD ELEMENTS
-function spaceship(x, y, color, lineColor, lineWeight, width, height) {
+
+function spaceship(x, y, color, lineColor, lineWeight, width, height, speed) {
     this.x = x;
     this.y = y;
     this.color = color;
@@ -83,6 +58,7 @@ function spaceship(x, y, color, lineColor, lineWeight, width, height) {
     this.lineWeight = lineWeight;
     this.width = width;
     this.height = height;
+    this.speed = speed;
     this.render = function () {
         ctx.fillStyle = this.color;
         ctx.strokeStyle = this.lineColor;
@@ -132,18 +108,19 @@ function renderAsteroids() {
 
 // CODE TO DETECT KEYBINDINGS and TRACK/ADJUST SCORE DISPLAY
 
+
 function detectMovement(e){
     if(e.which === 32){
-        let newScore = parseInt(score.innerText)
-        player.y -= 10
+        let newScore = parseInt(score.innerText);
+        player.y -= player.speed
         //  player ship will move 10 up
         newScore+=50
         score.innerText = newScore
     } else if (e.which === 37){
-        player.x -= 10
+        player.x -= player.speed
         //  player ship will move 10 left
     }else if (e.which === 39){
-        player.x += 10
+        player.x += player.speed
         //  player ship will move 10 right
     }
     detectImpact();
@@ -160,18 +137,27 @@ function detectImpact() {
         player.x + player.width > e.x &&
         player.x < e.x + e.width);
         if (test == true) {
-                gameOver();
+            player.speed = 0;
+            gameOver();
             }  
     })
 }
 
 function gameOver() {
     document.getElementById('gameoverModal').style.display = 'block';
-    let tryAgain = document.getElementById('tryagain');
-    tryAgain.addEventListener('click', ( )=> {
+    let quit = document.getElementById('quit');
+    let tryagain = document.getElementById('tryagain');
+    quit.addEventListener('click', ( )=> {
+        document.getElementById('gameoverModal').style.display = 'none';
         reset();
+        // currently reloads the whole page again
     });
-}
+    tryagain.addEventListener('click', ( )=> {
+        document.getElementById('gameoverModal').style.display = 'none';
+        resetPlayer();
+    }
+    // WANT: to clear current location of player and respawn player at bottom of screen
+    )}
 
 function gameWon() {
     const test = (player.y + player.height > mothership.y &&
@@ -179,19 +165,26 @@ function gameWon() {
         player.x + player.width > mothership.x &&
         player.x < mothership.x + mothership.width);
         if (test == true) {
-    document.getElementById('youwonModal').style.display = 'block';
-    let close = document.getElementById('close');
-    close.addEventListener('click', ( )=> {
-        reset();
-    });
+            document.getElementById('youwonModal').style.display = 'block';
+            let close = document.getElementById('close');
+            close.addEventListener('click', ( )=> {
+            reset();
+        });
+    }
 }
+
+function resetPlayer () {
+    clearCanvas(); 
+    player = new spaceship(250, 550, "aquamarine", "hotpink", 2, 30, 30, 10); 
+    player.render()
 }
 
 // 
 function reset () {
     window.location.reload();
-        // this reloaads the entire window which will reset the game loop
+        // this reloads the entire window which will reset the game loop
 }
+
 
 // FUNCTION THAT CONTROLS THE LIFE CYCLE OF A GAME [ FROM PLAY TO GAME OVER ]
 
@@ -207,11 +200,11 @@ function gameLoop() {
 // // WAITS FOR ALL CONTENTS OF PAGE TO LOAD BEFORE RENDERING GAME
 
 document.addEventListener("DOMContentLoaded", function () {
-    player = new spaceship(250, 550, "aquamarine", "hotpink", 2, 30, 30);
-    mothership = new spaceship(180, 0, 'limegreen', 'black', 2, 150, 10);
+    player = new spaceship(250, 550, "aquamarine", "hotpink", 2, 30, 30, 10);
+    mothership = new spaceship(180, 0, 'limegreen', 'black', 2, 150, 10, 0);
     document.addEventListener("keydown", detectMovement);
     generateAsteroids();
         // this fills the asteroidsArray with asteroids and sets the elements to spaceObjects
-    runGame = setInterval(gameLoop, 60);
+        runGame = setInterval(gameLoop, 60);
     
   });

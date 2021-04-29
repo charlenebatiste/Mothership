@@ -7,6 +7,16 @@ body {
 .start-screen{
     display: block;
 }
+
+.btn-info:hover {
+  background-color: #cbc3e3;
+  font-style: italic;
+}
+
+.btn-warning:hover {
+  background-color: #93DB70;
+    font-style: italic;
+}
 /* Instructions Modal */
 
 .modal-content{
@@ -17,6 +27,8 @@ body {
 .modal-title, .modal-body{
     color: black;
 }
+
+/* Play Screen Styling */
 
 .play-screen {
     display: none;
@@ -89,10 +101,17 @@ body {
     text-align: center;
     padding-left: 1em; 
   }
+  #keybindings-label {
+    text-align: center;
+    text-decoration: underline;
+    padding: .5em 0 0;
+    font-size: 1.2em;
+  }
   
   #center-btm {
     grid-area: center-btm;
-    padding-left: 1em; 
+    background-color: rgba(47, 79, 79, 0.568);
+
   } 
   
   /* Modal Content/Box */

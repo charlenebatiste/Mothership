@@ -55,6 +55,6 @@
 - [x] What are your goals for today?
 - [x] Do you have any blockers?
 
-1. RESPONSE
+1. Yesterday I edited the factory function for my spaceship so on impact the player speed changes to zero; solving a small bug that let players win after loosing. I refactored my javasript so the code was more concise and I built a resetPlayer function that allowed to player to try the same asteroid field again without reload the entire page.
 2. RESPONSE
 3. RESPONSE
