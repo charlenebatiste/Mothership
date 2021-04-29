@@ -108,10 +108,10 @@ function renderAsteroids() {
 
 // CODE TO DETECT KEYBINDINGS and TRACK/ADJUST SCORE DISPLAY
 
+let newScore = parseInt(score.innerText);
 
 function detectMovement(e){
     if(e.which === 32){
-        let newScore = parseInt(score.innerText);
         player.y -= player.speed
         //  player ship will move 10 up
         newScore+=50
@@ -126,6 +126,17 @@ function detectMovement(e){
     detectImpact();
     gameWon();
 }
+
+// gui update
+
+// function updateScoreDisplay(bool){
+//     if(player.y === -10){
+//       newScore+=100
+//       score.innerText = newScore
+//     } else {
+//         newScore+=0;
+//     }
+//   }
 
 // COLLISION DETECTION
 
@@ -150,13 +161,11 @@ function gameOver() {
     quit.addEventListener('click', ( )=> {
         document.getElementById('gameoverModal').style.display = 'none';
         reset();
-        // currently reloads the whole page again
     });
     tryagain.addEventListener('click', ( )=> {
         document.getElementById('gameoverModal').style.display = 'none';
-        resetPlayer();
+        resetGameboard();
     }
-    // WANT: to clear current location of player and respawn player at bottom of screen
     )}
 
 function gameWon() {
@@ -173,16 +182,18 @@ function gameWon() {
     }
 }
 
-function resetPlayer () {
+function resetGameboard () {
     clearCanvas(); 
+    newScore = 0;
+    score.innerText = 0;
     player = new spaceship(250, 550, "aquamarine", "hotpink", 2, 30, 30, 10); 
     player.render()
 }
+ // clears current location of player, respawns player at bottom of screen, resets score tracker
 
-// 
 function reset () {
     window.location.reload();
-        // this reloads the entire window which will reset the game loop
+        // this the window which will reset the game loop
 }
 
 
@@ -197,6 +208,21 @@ function gameLoop() {
   }
 
 
+//   sandbox
+// var img = new Image();   // Create new img element
+// function drawImage() {
+//     ctx.drawImage(img, 0, 0, 35, 35);
+//   };
+// img.src = './assets/alien-ship.png'; // Set source path
+
+// var imageObj = new Image();
+
+//       imageObj.onload = function() {
+//         ctx.drawImage(imageObj, 150, 50);
+//       };
+//       imageObj.src = 'https://2.bp.blogspot.com/-zG9DW_y7QPY/V18N7z7JfHI/AAAAAAAABhw/Ucgnsq36e1U4jzSDxlbpfzTl1f-KYi4YQCK4B/s1600/fabicon-big.jpg';
+  
+
 // // WAITS FOR ALL CONTENTS OF PAGE TO LOAD BEFORE RENDERING GAME
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -205,6 +231,6 @@ document.addEventListener("DOMContentLoaded", function () {
     document.addEventListener("keydown", detectMovement);
     generateAsteroids();
         // this fills the asteroidsArray with asteroids and sets the elements to spaceObjects
-        runGame = setInterval(gameLoop, 60);
+    runGame = setInterval(gameLoop, 60);
     
   });

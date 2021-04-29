@@ -47,6 +47,7 @@ body {
     grid-template-areas: "top-left top-left top-right top-right"
                           "game game game center-top"
                           "game game game center-btm"
+                          "game game game btm-btm"
 }
 
 #top-left, #top-right{
@@ -111,8 +112,30 @@ body {
   #center-btm {
     grid-area: center-btm;
     background-color: rgba(47, 79, 79, 0.568);
-
   } 
+
+  #btm-btm{
+    grid-area: btm-btm;
+    display: flex;
+  }
+
+  .alien-ship {
+   width: 80%;
+    margin: auto;
+  }
+
+  .floating {  
+    animation-name: floating;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+  
+@keyframes floating {
+    0% { transform: translate(0,  0px); }
+    50%  { transform: translate(0, 15px); }
+    100%   { transform: translate(0, 0px); }    
+}
   
   /* Modal Content/Box */
   .gameover-content {
