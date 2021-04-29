@@ -2,8 +2,8 @@
 
 - [✓] Name
 - [✓] Game Name
-- [ ] Github Link
-- [ ] Live Site
+- [✓] Github Link
+- [✓] Live Site
 - [ ] Regrade
 - [ ] Status
 - [✓] Game is playable
@@ -13,7 +13,7 @@
 - [✓] Winner/score is displayed (NO ALERTS)
 - [✓] Has directions - How to Play
 - [ ] Readme.md included and filled out
-- [ ] Appropriate Use of GitHub (`commits`)
+- [✓] Appropriate Use of GitHub (`commits`)
 - [✓] Deployed on Github Pages
 - [ ] DRY (Do Not Repeat Yourself) Code, Good Code Style
 - [✓] Effort Put into Styling

@@ -98,16 +98,10 @@ function spaceObject() {
     this.x = Math.floor(Math.random() * (game.width - 35));
     this.y = Math.floor(Math.random() * (game.height - 100));
     // set y axis to random location and then subtracts 50 from game.height to avoid aseroids rndering over the player
-    let color = 'yellow';
-    let lineColor = 'brown';
-    let lineWeight = 2;
     this.width = 45;
     this.height = 45;
     this.impact = false;
     this.render = function () {
-        ctx.fillStyle = color;
-        ctx.strokeStyle = lineColor;
-        ctx.strokeWidth = lineWeight;
         // ctx.strokeRect(this.x, this.y, this.width, this.height);
             // this shows the impact zone for the asteroid
         renderImage(this.x, this.y)
@@ -118,7 +112,7 @@ function spaceObject() {
 
 function generateAsteroids () {
     let asteroid;
-    for (let i = 0; i < 25; i++) {
+    for (let i = 0; i < 20; i++) {
     // 15 is the set number of asteroids to build
         asteroid = new spaceObject;
         asteroidArray.push(asteroid)
@@ -140,6 +134,7 @@ function renderImage(x, y) {
 }
  asteroidImage.onload = renderImage
 
+// FUNCTION TO DRAW THE PLAYERIMAGE TO CANVAS AND RENDER
 
 function renderPlayerImage(x, y) {
     ctx.drawImage(playerImage, x, y, 35, 35);
