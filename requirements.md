@@ -14,7 +14,7 @@
 - [✓] Has directions - How to Play
 - [ ] Readme.md included and filled out
 - [ ] Appropriate Use of GitHub (`commits`)
-- [ ] Deployed on Github Pages
+- [✓] Deployed on Github Pages
 - [ ] DRY (Do Not Repeat Yourself) Code, Good Code Style
 - [✓] Effort Put into Styling
 - [✓] Reset button

@@ -46,8 +46,8 @@
 - [x] Do you have any blockers?
 
 1. I repaired bad data in the spaceObject factory function and built the detectImpact function. On impact with a asteroid the console logs 'game over'. I also created a mothership object and on impact with the mothership, the console logs "you won". I built modals that are called when either of those functions are true that lets the player quit the game or restart.
-2. RESPONSE
-3. RESPONSE
+2. Refactor my code so it's cleaner and less repetitive. Set a player speed so that on impact the speed changes to zero. Build a resetGameboard function that resets the player without reloading the page. Get images in place of the square for asteroids and the player spaceship. If there is time at the end of the day I would like to set an animation to the asteroids so they float across the screen at a speed of 2.
+3. Im unsure how to build the resetGameboard function that does not reload the page without rewritting the pageload function.
 
 # Friday
 
