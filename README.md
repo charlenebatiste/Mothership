@@ -51,8 +51,8 @@ function generateAsteroids() {
 function spaceObject() {
   this.x = Math.floor(Math.random() * (game.width - 35));
   this.y = Math.floor(Math.random() * (game.height - 100));
-  this.width = 45;
-  this.height = 45;
+  this.width = 35;
+  this.height = 35;
   this.impact = false;
   this.render = function () {
     renderImage(this.x, this.y);
