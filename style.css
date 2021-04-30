@@ -15,7 +15,7 @@ body {
 
 .btn-warning:hover {
   background-color: #93DB70;
-    font-style: italic;
+  font-style: italic;
 }
 /* Instructions Modal */
 
@@ -83,11 +83,13 @@ body {
   #top-right {
     grid-area: top-right;
   }
+
   .quit {
     padding: .5em 1em;
     background-color: red;
     color: white;
   }
+
   .quit:hover{
       background-color: blanchedalmond;
       color: brown;
@@ -102,6 +104,7 @@ body {
     text-align: center;
     padding-left: 1em; 
   }
+
   #keybindings-label {
     text-align: center;
     text-decoration: underline;
@@ -138,20 +141,35 @@ body {
 }
   
   /* Modal Content/Box */
-  .gameover-content {
-    background-color: rgb(180, 24, 24);
-    background-image: url(./assets/crashed-ship.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
+
+  .gameover-content, .youwon-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
     margin: 20% auto; /* 20% from the top and centered */
     padding: 20px;
-    border: 1px solid #888;
-    height: 45vh;
+    height: 50%;
     width: 50%; /* Could be more or less, depending on screen size */
+    text-align: center;
+  }
+
+  .gameover-content {
+    background-color: rgb(180, 24, 24);
+    border: 1px solid #888;
     text-align: center;
 }
 
+/* Modal Content/Box */
+.youwon-content {
+  background-color: rgb(37, 170, 25);
+  color: black;
+  border: 2px solid rgb(17, 201, 109);
+  
+}
+
+.modalImage__image {
+  width: 50%;
+}
   
   /* The Close Button */
   .gameover-close {
@@ -173,17 +191,7 @@ body {
     background-color: rgba(0, 0, 0, 0.534); /* Black w/ opacity */
 }
   
-  /* Modal Content/Box */
-  .youwon-content {
-    background-color: rgb(37, 170, 25);
-    color: black;
-    margin: 20% auto; /* 20% from the top and centered */
-    padding: 20px;
-    border: 2px solid rgb(17, 201, 109);
-    height: 40vh;
-    width: 40%; /* Could be more or less, depending on screen size */
-    text-align: center;
-}
+  
 
   
   /* The Close Button */

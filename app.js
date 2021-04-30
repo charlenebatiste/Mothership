@@ -17,7 +17,6 @@ let newScore = parseInt(score.innerText);
 var asteroidImage = new Image();
 asteroidImage.src = './assets/asteroid.svg';
 
-
 var playerImage = new Image();
 playerImage.src = './assets/alien-ship.png';
 
@@ -98,8 +97,8 @@ function spaceObject() {
     this.x = Math.floor(Math.random() * (game.width - 35));
     this.y = Math.floor(Math.random() * (game.height - 100));
     // set y axis to random location and then subtracts 50 from game.height to avoid aseroids rndering over the player
-    this.width = 45;
-    this.height = 45;
+    this.width = 35;
+    this.height = 35;
     this.impact = false;
     this.render = function () {
         // ctx.strokeRect(this.x, this.y, this.width, this.height);
@@ -242,5 +241,5 @@ document.addEventListener("DOMContentLoaded", function () {
     document.addEventListener("keydown", detectMovement);
     generateAsteroids();
         // this fills the asteroidsArray with asteroids and sets the elements to spaceObjects
-        runGame = setInterval(gameLoop, 60);
+    runGame = setInterval(gameLoop, 60);
   });

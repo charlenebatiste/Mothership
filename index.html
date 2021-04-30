@@ -109,17 +109,29 @@
     <!-- Game Over Modal -->
     <div id="gameoverModal" class="game-over-modal">
         <div class="gameover-content">
-          <h1>Game Over</h1>
-          <h2>Collision Detected</h2>
-          <button class="gameover-close" id="quit">Quit</button>
-          <button class="gameover-close" id="tryagain">Try Again</button>
+            <div class="gameover__text">
+                <h1>Game Over</h1>
+                <h2>Collision Detected</h2>
+            </div>
+            <div class="modalImage">
+                <img src="./assets/crashed-ship.png" alt="Image of alien ship crash" class="modalImage__image">
+            </div>
+            <div class="gameover__buttons">
+                <button class="gameover-close" id="quit">Quit</button>
+                <button class="gameover-close" id="tryagain">Try Again</button>
+            </div>
         </div>
       </div>
     <!-- You Won Modal -->
     <div id="youwonModal" class="you-won-modal">
         <div class="youwon-content">
-          <h1>Congratulations</h1>
-          <p>You made it to the Mothership</p>
+            <div class="youwon__text">
+                <h1>Congratulations</h1>
+                <p>You made it to the Mothership</p>
+            </div>
+            <div class="modalImage">
+                <img src="./assets/happy-alien.png" alt="Image of a happy alien" class="modalImage__image">
+            </div>
           <button class="youwon-close" id="close">Close</button>
         </div>
       </div>
@@ -128,5 +140,6 @@
     <script src="./app.js"></script>
 
     <!-- Alien ship icon from <a href='https://pngtree.com/so/space-icon'>space icon png from pngtree.com</a> -->
+    <!-- Happy alien from <a href='https://pngtree.com/so/alien-clipart'>alien clipart png from pngtree.com</a> -->
 </body>
 </html>

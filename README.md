@@ -2,6 +2,8 @@
 
 This game was created to help develop my Javascript skills while practicing using two elements new to me: CSS Frameworks & HTML5 Canvas.
 
+~~> [Play the Game](https://charlenebatiste.github.io/Mothership/)
+
 ## Table of contents
 
 - [Title of Game](#title-of-game)
@@ -77,10 +79,6 @@ _Extra dimensions were subtracted from the x and y axis to avoid asteroids rende
 1. _`Fork`_ and _`Clone`_ this respository to your local machine
 2. Open `index.html` in your browser to play or
 3. Open the directory in your text editor of choice to view or edit the code
-
-Or
-
-👽 [follow this link to play the game](https://charlenebatiste.github.io/Mothership/)
 
 ## Technologies
 
