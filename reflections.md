@@ -51,10 +51,10 @@
 
 # Friday
 
-- [x] What did you achieve yesterday?
-- [x] What are your goals for today?
-- [x] Do you have any blockers?
+1. What HTML, CSS, and or JavaScript skills you learned while building your game?
 
-1. Yesterday I edited the factory function for my spaceship so on impact the player speed changes to zero; solving a small bug that let players win after loosing. I refactored my javasript so the code was more concise and I built a resetPlayer function that allowed to player to try the same asteroid field again without reload the entire page.
-2. RESPONSE
-3. RESPONSE
+- I learned how to build a game using Canvas and grid to style for the first time. I also used Bootstrap which was my first time implementing a framework on a project. This project helped me nail down for loops which was something I understood theoretically but was able to really be able to make on my own.
+
+2. What's one topic you want to spend more practice on?
+
+- I definitely want to spend more time working on working with APIs.
