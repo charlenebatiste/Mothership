@@ -48,12 +48,6 @@ function generateAsteroids() {
   }
 }
 
-function renderAsteroids() {
-  asteroidArray.forEach((e) => {
-    e.render();
-  });
-}
-
 function spaceObject() {
   this.x = Math.floor(Math.random() * (game.width - 35));
   this.y = Math.floor(Math.random() * (game.height - 100));
@@ -63,6 +57,12 @@ function spaceObject() {
   this.render = function () {
     renderImage(this.x, this.y);
   };
+}
+
+function renderAsteroids() {
+  asteroidArray.forEach((e) => {
+    e.render();
+  });
 }
 ```
 
