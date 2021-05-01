@@ -149,7 +149,7 @@ body {
     margin: 20% auto; /* 20% from the top and centered */
     padding: 20px;
     height: 50%;
-    width: 50%; /* Could be more or less, depending on screen size */
+    width: 50%; 
     text-align: center;
   }
 
@@ -172,7 +172,7 @@ body {
 }
   
   /* The Close Button */
-  .gameover-close {
+  .gameover-close, .youwon-close {
     color: black;
     font-weight: bold;
   }
@@ -190,13 +190,3 @@ body {
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0, 0, 0, 0.534); /* Black w/ opacity */
 }
-  
-  
-
-  
-  /* The Close Button */
-  .youwon-close {
-    color: black;
-    font-weight: bold;
-  }
-  

@@ -11,6 +11,13 @@
     <title>Mothership - Play Game</title>
 </head>
 <body>
+   <audio id="spaceAmbience" autoplay loop>
+        <source src="./sounds/cabin-ambience.mp3" >
+      </audio> 
+      <!-- ambiant space sound, loop includes second of silence. -->
+    <audio id="alienChatter" autoplay loop muted>
+        <source src="./sounds/alien-sounds.mp3" >
+      </audio> 
     <div class="start-screen container">
         <div class="start-screen__title row py-5 text-center">
             <div class="col">
@@ -88,7 +95,9 @@
             <button type="button" class="quit" id="quitGame">ABORT MISSION</button>
         </div>
         <main>
-            <canvas id='game'></canvas>
+            <canvas id='game'>
+               
+            </canvas>
         </main>
         <aside id="center-top">
             <h1>Score:</h1>

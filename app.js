@@ -20,6 +20,15 @@ asteroidImage.src = './assets/asteroid.svg';
 var playerImage = new Image();
 playerImage.src = './assets/alien-ship.png';
 
+var spaceAmbience = document.getElementById("spaceAmbience");
+var alienChatter = document.getElementById("alienChatter");
+alienChatter.volume = 0.04; 
+
+
+const explosion = new Audio("./sounds/explosion.mp3");
+
+// var requestAnimationFrame = window.requestAnimationFrame;
+
 // go to play screen using BLAST OFF button
 
 start.addEventListener('click', playGame);
@@ -28,6 +37,7 @@ function playGame() {
     if (mainScreen.style.display = 'block') {
         mainScreen.style.display = 'none';
         playScreen.style.display = 'block';
+        alienChatter.muted = false;
     }
 }
 
@@ -105,6 +115,7 @@ function spaceObject() {
             // this shows the impact zone for the asteroid
         renderImage(this.x, this.y)
       };
+    //    requestAnimationFrame(animate);
 }
 
 // FUNCTION TO FILL ASTROIDARRAY WITH ASTEROIDS AND SETS EACH ASTEROID EQUAL TO SPACE OBJECT
@@ -140,20 +151,20 @@ function renderPlayerImage(x, y) {
 }
  playerImage.onload = renderPlayerImage
 
-// CODE TO DETECT KEYBINDINGS and TRACK/ADJUST SCORE DISPLAY
+// CODE TO DETECT KEYBINDINGS, SET BOUNDARIES FOR PLAYER MOVEMENT and TRACK/ADJUST SCORE DISPLAY
 
 function detectMovement(e){
-    if(e.which === 32){
+    if(e.which === 32 && player.y !== 0){
         player.y -= player.speed
         //  player ship will move 10 up
         if (player.speed !== 0) {
             newScore+=50
             score.innerText = newScore
          }
-    } else if (e.which === 37){
+    } else if (e.which === 37 && player.x !== 0) {
         player.x -= player.speed
         //  player ship will move 10 left
-    } else if (e.which === 39){
+    } else if (e.which === 39 && (player.x + player.width) !== 500) {
         player.x += player.speed
         //  player ship will move 10 right
     }
@@ -172,6 +183,8 @@ function detectImpact() {
         player.x < e.x + e.width);
         if (test == true) {
             player.speed = 0;
+            alienChatter.muted = true;
+            explosion.play();
             gameOver();
         }  
     })
@@ -187,6 +200,7 @@ function gameOver() {
     });
     tryagain.addEventListener('click', ( )=> {
         document.getElementById('gameoverModal').style.display = 'none';
+        alienChatter.muted = false;
         resetGameboard();
     }
 )}
