@@ -14,20 +14,26 @@ const asteroidArray = [];
 
 let newScore = parseInt(score.innerText);
 
-var asteroidImage = new Image();
+let asteroidImage = new Image();
 asteroidImage.src = './assets/asteroid.svg';
 
-var playerImage = new Image();
+let playerImage = new Image();
 playerImage.src = './assets/alien-ship.png';
 
-var spaceAmbience = document.getElementById("spaceAmbience");
-var alienChatter = document.getElementById("alienChatter");
+let spaceAmbience = document.getElementById("spaceAmbience");
+let instructionsSound = document.getElementById('openInstructions');
+let alienChatter = document.getElementById("alienChatter");
 alienChatter.volume = 0.04; 
-
 
 const explosion = new Audio("./sounds/explosion.mp3");
 
-// var requestAnimationFrame = window.requestAnimationFrame;
+// let requestAnimationFrame = window.requestAnimationFrame;
+
+// play soud on instructions modal open
+
+document.getElementById('instructions').addEventListener("click", () => {
+    instructionsSound.play();
+})
 
 // go to play screen using BLAST OFF button
 
@@ -68,19 +74,13 @@ function clearCanvas() {
 
 // // FACTORY FUNCTION TO HELP BUILD ELEMENTS
 
-function spaceship(x, y, color, lineColor, lineWeight, width, height, speed) {
+function spaceship(x, y, width, height, speed) {
     this.x = x;
     this.y = y;
-    this.color = color;
-    this.lineColor = lineColor;
-    this.lineWeight = lineWeight;
     this.width = width;
     this.height = height;
     this.speed = speed;
     this.render = function () {
-        ctx.fillStyle = this.color;
-        ctx.strokeStyle = this.lineColor;
-        ctx.strokeWidth = this.lineWeight;
         renderPlayerImage(this.x, this.y);
       };
 }
@@ -247,10 +247,10 @@ function gameLoop() {
     renderPlayerImage();
   }
 
-// // WAITS FOR ALL CONTENTS OF PAGE TO LOAD BEFORE RENDERING GAME
+// WAITS FOR ALL CONTENTS OF PAGE TO LOAD BEFORE RENDERING GAME
 
 document.addEventListener("DOMContentLoaded", function () {
-    player = new spaceship(250, 550, "aquamarine", "hotpink", 2, 30, 30, 10);
+    player = new spaceship(250, 550, 30, 30, 10);
     landingDock = new Mothership(180, 0, 'limegreen', 'black', 2, 150, 10, 0);
     document.addEventListener("keydown", detectMovement);
     generateAsteroids();
