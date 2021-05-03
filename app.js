@@ -25,7 +25,7 @@ let instructionsSound = document.getElementById('openInstructions');
 let alienChatter = document.getElementById("alienChatter");
 alienChatter.volume = 0.04; 
 
-const explosion = new Audio("./sounds/explosion.mp3");
+
 
 // let requestAnimationFrame = window.requestAnimationFrame;
 
@@ -184,6 +184,7 @@ function detectImpact() {
         if (test == true) {
             player.speed = 0;
             alienChatter.muted = true;
+            let explosion = new Audio("./sounds/explosion.mp3");
             explosion.play();
             gameOver();
         }  
@@ -224,10 +225,11 @@ function resetGameboard () {
     clearCanvas(); 
     newScore = 0;
     score.innerText = 0;
-    player = new spaceship(250, 550, "aquamarine", "hotpink", 2, 30, 30, 10); 
+    player = new spaceship(250, 550, 30, 30, 10); 
     player.render()
 }
  // clears current location of player, respawns player at bottom of screen, resets score tracker
+
 
 function reset () {
     window.location.reload();
